@@ -1,7 +1,7 @@
 # Личный проект «Типотека» [![Build status][travis-image]][travis-url]
 
-* Студент: [Илья Кривокотченко](https://up.htmlacademy.ru/nodejs/3/user/669395).
-* Наставник: `Неизвестно`.
+- Студент: [Илья Кривокотченко](https://up.htmlacademy.ru/nodejs/3/user/669395).
+- Наставник: [Сергей Рожков](https://htmlacademy.ru/profile/id1069033).
 
 ---
 
