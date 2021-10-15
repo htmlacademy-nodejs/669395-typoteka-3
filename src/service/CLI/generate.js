@@ -1,12 +1,13 @@
 'use strict';
 
-const fs = require(`fs`);
+const fs = require(`fs`).promises;
 const {
   getRandomInt,
   shuffle,
 } = require(`../../utils`);
 const dayjs = require(`dayjs`);
-const dayjsRandom = require(`dayjs-random`)
+const dayjsRandom = require(`dayjs-random`);
+const chalk = require(`chalk`);
 
 dayjs.extend(dayjsRandom)
 
@@ -66,18 +67,17 @@ const CATEGORIES = [
 
 module.exports = {
   name: `--generate`,
-  run(args) {
+  async run(args) {
     const [count] = args;
     const countPublications = Number.parseInt(count, 10) || DEFAULT_COUNT;
     const content = JSON.stringify(generatePublications(countPublications));
 
-    fs.writeFile(FILE_NAME, content, (err) => {
-      if (err || count > 1000) {
-        return console.error(`Can't write data to file...`);
-      }
-
-      return console.info(`Operation success. File created.`);
-    });
+    try { 
+      fs.writeFile(FILE_NAME, content);
+      console.info(chalk.green(`Operation success. File created.`));
+    } catch (err) {
+      console.error(chalk.red(`Can't write data to file...`));
+    }
   }
 };
 

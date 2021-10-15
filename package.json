@@ -4,6 +4,7 @@
   "description": "Типотека",
   "main": "./src/service/service.js",
   "dependencies": {
+    "chalk": "4.1.2",
     "dayjs": "1.10.7",
     "dayjs-random": "^1.0.0"
   },
