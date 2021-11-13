@@ -4,7 +4,7 @@ const fs = require(`fs`).promises;
 const {HttpCode} = require(`../../constants`)
 
 const DEFAULT_PORT = 3000;
-const FILENAME = `mocks.json`;
+const FILENAME = `mock.json`;
 
 module.exports = {
     name: `--server`,
@@ -21,17 +21,17 @@ module.exports = {
             </head>
             <body>${message}</body>
           </html>`.trim();
-      
+
         res.writeHead(statusCode, {
           'Content-Type': `text/html; charset=UTF-8`,
         });
-      
+
         res.end(template);
       };
 
       const onClientConnect = async (req, res) => {
         const notFoundMessageText = `Not found`;
-      
+
         switch (req.url) {
           case `/`:
             try {
@@ -42,7 +42,7 @@ module.exports = {
             } catch (err) {
               sendResponse(res, HttpCode.NOT_FOUND, notFoundMessageText);
             }
-      
+
             break;
           default:
             sendResponse(res, HttpCode.NOT_FOUND, notFoundMessageText);
@@ -59,6 +59,6 @@ module.exports = {
         console.error(chalk.red(`Ошибка при создании сервера: ${message}`));
       });
 
-      
+
     }
   }
