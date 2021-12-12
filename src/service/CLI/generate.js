@@ -14,9 +14,9 @@ dayjs.extend(dayjsRandom)
 const DEFAULT_COUNT = 1;
 const MAX_COUNT = 1000;
 const FILE_NAME = `mock.json`;
-const FILE_SENTENCES_PATH = `./src/data/sentences.txt`;
-const FILE_TITLES_PATH = `./src/data/titles.txt`;
-const FILE_CATEGORIES_PATH = `./src/data/categories.txt`;
+const FILE_SENTENCES_PATH = `../../src/data/sentences.txt`;
+const FILE_TITLES_PATH = `../../src/data/titles.txt`;
+const FILE_CATEGORIES_PATH = `../../src/data/categories.txt`;
 
 module.exports = {
   name: `--generate`,
@@ -29,7 +29,7 @@ module.exports = {
     const countPublications = Number.parseInt(count, 10) || DEFAULT_COUNT;
     const content = JSON.stringify(generatePublications(countPublications, titles, categories, sentences));
 
-    try { 
+    try {
       fs.writeFile(FILE_NAME, content);
       console.info(chalk.green(`Operation success. File created.`));
     } catch (err) {
